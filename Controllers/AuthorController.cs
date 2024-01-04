@@ -44,7 +44,21 @@ namespace CrudApplication.Controllers
             }
             _authorDbContext.Authors.Add(author);
             _authorDbContext.SaveChanges();
-            return CreatedAtAction(nameof(GetAuthor), new {id = author.AuthorId}, author);
+            return CreatedAtAction(nameof(GetAuthor), new {id = author.Id}, author);
         }
+
+        [HttpDelete]
+        public ActionResult DeleteAuthor(int id)
+        {
+            var author = _authorDbContext.Authors.Find(id);
+            if(author == null)
+            {
+                return NotFound();
+            }
+            _authorDbContext.Authors.Remove(author);
+            _authorDbContext.SaveChanges();
+            return Ok(author);
+        }
+
     }
 }
