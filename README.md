@@ -2,8 +2,9 @@ To use this repo you will first need to create a sql server database and then ad
 
 }
   "ConnectionStrings": {
-  
+    
     "DefaultConnection": "Server=-----;Database=----;User Id=----;Password=----;TrustServerCertificate=True"
+    
   }
 }
 
