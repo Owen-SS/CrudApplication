@@ -1,3 +1,5 @@
+This project has not been styled and is only for understanding the flow of data betweem the backend and the frontend.
+
 To use this repo you will first need to create a sql server database and then add your connection string to this layout in the user secrets:
 
 }
