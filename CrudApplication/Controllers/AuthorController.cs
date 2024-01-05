@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CrudApplication.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class AuthorController : ControllerBase
     {
@@ -47,7 +47,7 @@ namespace CrudApplication.Controllers
             return CreatedAtAction(nameof(GetAuthor), new {id = author.Id}, author);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public ActionResult DeleteAuthor(int id)
         {
             var author = _authorDbContext.Authors.Find(id);

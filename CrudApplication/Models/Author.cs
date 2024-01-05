@@ -18,6 +18,6 @@ namespace CrudApplication.Models
         [EmailAddress]
         [MaxLength(50)]
         public string? Email { get; set; }
-        public List<string>? Quotes { get; set; }
+        public string? Quotes { get; set; }
     }
 }
