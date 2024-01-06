@@ -2,8 +2,6 @@
 using CrudApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using CrudApplication.Services;
-using CrudApplication.Controllers.Helpers;
 
 namespace CrudApplication.Controllers
 {
@@ -12,36 +10,20 @@ namespace CrudApplication.Controllers
     public class PaginationController : ControllerBase
     {
         private readonly AuthorDbContext _authorDbContext;
-        private readonly IUriService _uriService;
 
-        public PaginationController(AuthorDbContext authorDbContext, IUriService uriService)
+        public PaginationController(AuthorDbContext authorDbContext)
         {
             _authorDbContext = authorDbContext;
-            _uriService = uriService;
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var author = await _authorDbContext.Authors.Where( a => a.Id == id ).FirstOrDefaultAsync();
-            if(author == null)
-            {
-                return NotFound();
-            }
-            return Ok(new Response<Author>(author));
         }
 
         [HttpGet]
         public async Task<ActionResult> GetAllAuthors([FromQuery] PaginationFilter filter)
         {
-            //var route = Request.Path.Value;
-            var pagedData = await _authorDbContext.Authors
+            var data = await _authorDbContext.Authors.ToListAsync();
+            var pagedData = data
                 .Skip((filter.PageNumber - 1) * filter.PageSize)
                 .Take(filter.PageSize)
-                .ToListAsync();
-            //var totalRecords = await _authorDbContext.Authors.CountAsync();
-            //var pagedResponse = PaginationHelper.CreatePagedReponse<Author>(pagedData, validFilter, totalRecords, _uriService, route);
-
+                .ToList();
             return Ok(pagedData);
         }
     }

@@ -1,4 +1,3 @@
-using CrudApplication.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AuthorDbContext>(options => options.UseSqlServer(
 builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//Enable CORS so I can pass data through the api to the frontend
+//Enable CORS so I can pass data through the api to the frontend and access it
 
 builder.Services.AddCors(options =>
 {
@@ -25,14 +24,6 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader()
         .AllowAnyMethod();
     });
-});
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddSingleton<IUriService>(o =>
-{
-    var accessor = o.GetRequiredService<IHttpContextAccessor>();
-    var request = accessor.HttpContext.Request;
-    var uri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent());
-    return new UriService(uri);
 });
 
 var app = builder.Build();
