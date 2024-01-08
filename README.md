@@ -20,6 +20,7 @@ Step 2:
   - dotnet ef migrations script
     
 - If this does not work you can add each migration manually using:
+  
   - dotnet ef migrations script <migration name>
 
 Step 3:
