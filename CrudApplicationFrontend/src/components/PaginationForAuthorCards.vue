@@ -34,9 +34,6 @@
       this.fetchAuthors();
     },
     methods: {
-      async fetchTotalPages(){
-        
-      },
       async fetchAuthors() {
         try {
             this.pageNumber++;
