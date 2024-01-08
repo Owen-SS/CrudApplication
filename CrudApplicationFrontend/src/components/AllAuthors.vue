@@ -23,7 +23,6 @@ export default {
                     }
                 });
                 this.Authors = response.data;
-                console.log(this.Authors);
             } catch (error) {
                 console.error('Error fetching authors:', error);
             }

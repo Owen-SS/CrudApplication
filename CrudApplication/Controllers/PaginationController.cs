@@ -17,14 +17,26 @@ namespace CrudApplication.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllAuthors([FromQuery] PaginationFilter filter)
+        public async Task<IActionResult> GetAllAuthors([FromQuery] PaginationFilter filter)
         {
             var data = await _authorDbContext.Authors.ToListAsync();
             var pagedData = data
                 .Skip((filter.PageNumber - 1) * filter.PageSize)
                 .Take(filter.PageSize)
                 .ToList();
-            return Ok(pagedData);
+
+            var totalCards = await _authorDbContext.Authors.CountAsync();
+            var totalPages = ((double)totalCards / (double)filter.PageSize);
+            int roundedNumbers = Convert.ToInt32(Math.Ceiling(totalPages));
+
+            var response = new PaginationResponse
+            {
+                TotalCards = totalCards,
+                TotalPages = roundedNumbers,
+                Authors = pagedData
+            };
+
+            return Ok(response);
         }
     }
 }
