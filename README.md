@@ -25,3 +25,20 @@ Step 2:
 Step 3:
 - To update the tables with the correct schema run:
   - dotnet ef database-update
+
+
+ To get the frontend working:
+ Step 1: 
+ -You need to create a .env file inside the CrudApplicationFrontend folder
+
+ Step 2:
+ - You need to define-
+     -VITE_APP_ROOT_API
+
+    forexample, if you are using local host it will look something like--
+     VITE_APP_ROOT_API=https://localhost:44311/api/
+   
+Step 3:
+  Once enviromental variables have been defined you should be able to run npm run dev to spin up a local frontend site
+
+ 
