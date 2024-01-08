@@ -14,13 +14,13 @@
       return {
         Author: {},
         AuthorId: null,
+        ApiBase:import.meta.env.VITE_APP_ROOT_API,
       };
     },
     methods: {
       async getAuthorById() {
         try {
-          const response = await axios.get(
-            `https://localhost:44311/api/Author/GetAuthor/${this.AuthorId}`,
+          const response = await axios.get(this.ApiBase + `Author/GetAuthor/${this.AuthorId}`,
             {
               headers: {
                 Accept: 'application/json',

@@ -18,14 +18,14 @@
       return {
         AuthorId: null,
         deletionSuccess: false,
+        ApiBase:import.meta.env.VITE_APP_ROOT_API,
       };
     },
     methods: {
         deleteAuthorById() {
         console.log(this.AuthorId);
         try {
-          const response = axios.delete(
-            `https://localhost:44311/api/Author/DeleteAuthor/${this.AuthorId}`
+          const response = axios.delete( this.ApiBase + `Author/DeleteAuthor/${this.AuthorId}`
           );
           if (response.status === 200) {
             this.deletionSuccess = true;

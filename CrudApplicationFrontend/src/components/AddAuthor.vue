@@ -20,12 +20,13 @@
         lastName: null,
         email: null,
         quote: null,
+        ApiBase: import.meta.env.VITE_APP_ROOT_API
       };
     },
     methods: {
       async addAuthor() {
         try {
-          const response = await axios.post('https://localhost:44311/api/Author/CreateAuthor', {
+          const response = await axios.post(this.ApiBase + 'Author/CreateAuthor', {
             FirstName: this.firstName,
             LastName: this.lastName,
             Email: this.email,

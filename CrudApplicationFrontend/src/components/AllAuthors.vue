@@ -4,11 +4,13 @@
 
 <script>
 import axios from 'axios';
+import.meta.env
 
 export default {
     data() {
         return {
-            Authors: null
+            Authors: null,
+            ApiBase:import.meta.env.VITE_APP_ROOT_API
         }
     },
     mounted() {
@@ -17,7 +19,7 @@ export default {
     methods: {
         async GetAuthors() {
             try {
-                const response = await axios.get('https://localhost:44311/api/Author/GetAuthors', {
+                const response = await axios.get(this.ApiBase + 'Author/GetAuthors', {
                     headers: {
                         Accept: 'application/json'
                     }

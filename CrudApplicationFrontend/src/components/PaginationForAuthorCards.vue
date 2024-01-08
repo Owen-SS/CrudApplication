@@ -26,7 +26,8 @@
         pageSize: 5,
         pageNumber: 0,
         totalPages: 0,
-        totalCards:0
+        totalCards:0,
+        ApiBase:import.meta.env.VITE_APP_ROOT_API,
       };
     },
     mounted() {
@@ -39,7 +40,7 @@
       async fetchAuthors() {
         try {
             this.pageNumber++;
-            const response = await axios.get(`https://localhost:44311/api/Pagination/GetAllAuthors?pageNumber=${this.pageNumber}&pageSize=${this.pageSize}`);
+            const response = await axios.get(this.ApiBase + `Pagination/GetAllAuthors?pageNumber=${this.pageNumber}&pageSize=${this.pageSize}`);
           
           if (response.data && response.data.authors.length > 0) {
             this.authors = response.data.authors;
@@ -51,7 +52,7 @@
         try {
           if(this.pageNumber > 0){
             this.pageNumber --;
-            const response = await axios.get(`https://localhost:44311/api/Pagination/GetAllAuthors?pageNumber=${this.pageNumber}&pageSize=${this.pageSize}`);
+            const response = await axios.get(this.ApiBase + `Pagination/GetAllAuthors?pageNumber=${this.pageNumber}&pageSize=${this.pageSize}`);
             if (response.data && response.data.authors.length > 0){
               this.authors = response.data.authors;
             }
