@@ -20,7 +20,10 @@ Step 2:
   - dotnet ef migrations script
     
 - If this does not work you can add each migration manually using:
-  - dotnet ef migrations script <migration name>
+  
+  -   dotnet ef migrations script (migration name)
+  -   or
+  -   dotnet ef database-update (migration name)
 
 Step 3:
 - To update the tables with the correct schema run:
@@ -28,6 +31,7 @@ Step 3:
 
 
  To get the frontend working:
+ 
  Step 1: 
  -You need to create a .env file inside the CrudApplicationFrontend folder
 
