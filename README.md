@@ -41,4 +41,7 @@ Step 3:
 Step 3:
   Once enviromental variables have been defined you should be able to run npm run dev to spin up a local frontend site
 
+  KEY:
+  .ENV(frontend) and USER SECRETS(Backend) should not be pushed up to the repository
+
  
