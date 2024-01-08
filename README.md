@@ -28,6 +28,7 @@ Step 3:
 
 
  To get the frontend working:
+ 
  Step 1: 
  -You need to create a .env file inside the CrudApplicationFrontend folder
 
