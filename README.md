@@ -47,5 +47,6 @@ Step 3:
 
   KEY:
   .ENV(frontend) and USER SECRETS(Backend) should not be pushed up to the repository
+  The netlify.toml file should not be changed it is only responsible for how the site is built and what folder it looks at for the site assets
 
  
